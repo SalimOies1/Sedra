@@ -81,7 +81,7 @@ button{
  
 .petal{
     position: fixed;
-    z-index: 999;
+    z-index: -1;
     top: -40px;
     font-size: 22px;
     opacity: 0.6;
