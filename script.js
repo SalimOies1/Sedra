@@ -538,3 +538,55 @@ function updateActiveItem(container) {
     const items = container.querySelectorAll('.time-scroll-item');
     const index = Math.round(container.scrollTop / ITEM_HEIGHT);
     items.forEach((it, i) => it.classList.toggle('active', i === index));
+ return items[index] ? Number(items[index].dataset.value) : 0;
+}
+ 
+let hourScrollTimeout, minuteScrollTimeout;
+ 
+hourScroll.addEventListener('scroll', () => {
+    clearTimeout(hourScrollTimeout);
+    hourScrollTimeout = setTimeout(() => {
+        chosenHour = updateActiveItem(hourScroll);
+        hourScroll.scrollTo({ top: Math.round(hourScroll.scrollTop / ITEM_HEIGHT) * ITEM_HEIGHT, behavior: 'smooth' });
+    }, 100);
+});
+ 
+minuteScroll.addEventListener('scroll', () => {
+    clearTimeout(minuteScrollTimeout);
+    minuteScrollTimeout = setTimeout(() => {
+        chosenMinute = updateActiveItem(minuteScroll);
+        minuteScroll.scrollTo({ top: Math.round(minuteScroll.scrollTop / ITEM_HEIGHT) * ITEM_HEIGHT, behavior: 'smooth' });
+    }, 100);
+});
+ 
+function openTimeModal() {
+    chosenHour = 18;
+    chosenMinute = 0;
+    scrollToValue(hourScroll, chosenHour);
+    scrollToValue(minuteScroll, chosenMinute);
+    updateActiveItem(hourScroll);
+    updateActiveItem(minuteScroll);
+    timeModalOverlay.classList.add('show');
+}
+ 
+timeConfirmBtn.addEventListener('click', () => {
+    timeModalOverlay.classList.remove('show');
+ 
+    const { year, monthIndex, day } = pendingDateParts;
+    selectedDate = new Date(year, monthIndex, day, chosenHour, chosenMinute, 0);
+ 
+    overlayText.textContent = 'تمام هيك ';
+    resultOverlay.classList.remove('accept', 'reject', 'show');
+    void resultOverlay.offsetWidth;
+    resultOverlay.classList.add('accept', 'show');
+ 
+    setTimeout(() => {
+        resultOverlay.classList.remove('show');
+        setTimeout(() => resultOverlay.classList.remove('accept'), 350);
+        sixthScreen.classList.remove('show');
+        showSeventhScreen();
+    }, 1500);
+});
+ 
+ 
+ 
