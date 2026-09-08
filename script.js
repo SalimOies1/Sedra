@@ -217,7 +217,7 @@ const petalEmojis = ['🌸', '🌹', '💮', '🌷'];
 const petalContainer = document.body;
 const petals = [];
  
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 20; i++) {
     const p = document.createElement('div');
     p.className = 'petal';
     p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
@@ -439,8 +439,9 @@ function handleDayClick(isBirthday, year, monthIndex, day) {
     if (isBirthday) {
         pendingDateParts = { year, monthIndex, day };
         openTimeModal();
-       } else {
+         } else {
         overlayText.textContent = 'مرفوووض ❌';
+        resultOverlay.style.display = 'flex';
         resultOverlay.className = 'result-overlay reject show';
 
         clearTimeout(rejectOverlayTimer);
@@ -449,6 +450,7 @@ function handleDayClick(isBirthday, year, monthIndex, day) {
 
             setTimeout(() => {
                 resultOverlay.className = 'result-overlay';
+                resultOverlay.style.display = 'none';
             }, 320);
         }, 1200);
     }
@@ -682,35 +684,6 @@ timeConfirmBtn.addEventListener('click', () => {
 
 let rejectOverlayTimer = null;
 
-const allPetals = document.querySelectorAll('.petal');
-
-allPetals.forEach(p => {
-    p.dataset.baseLeft = p.style.left;
-    p.style.transition = 'opacity 0.35s ease, left 0.4s ease';
-});
-
-function spawnTouchHeart(x, y) {
-    const heart = document.createElement('div');
-    heart.textContent = '❤️';
-    heart.style.position = 'fixed';
-    heart.style.left = x + 'px';
-    heart.style.top = y + 'px';
-    heart.style.fontSize = '20px';
-    heart.style.pointerEvents = 'none';
-    heart.style.zIndex = '1000';
-    heart.style.transform = 'translate(-50%, -50%)';
-    heart.style.opacity = '1';
-    heart.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
-    document.body.appendChild(heart);
-
-    requestAnimationFrame(() => {
-        heart.style.transform = 'translate(-50%, -140%) scale(1.4)';
-        heart.style.opacity = '0';
-    });
-
-    setTimeout(() => heart.remove(), 850);
-}
-
 function handlePetalTouch(x, y) {
     const radius = 70;
 
@@ -727,10 +700,7 @@ function handlePetalTouch(x, y) {
             }, 1200);
         }
     });
-
-    spawnTouchHeart(x, y);
 }
-
 document.addEventListener('touchstart', (e) => {
     const touch = e.touches[0];
     if (touch) handlePetalTouch(touch.clientX, touch.clientY);
