@@ -538,7 +538,7 @@ function updateActiveItem(container) {
     const items = container.querySelectorAll('.time-scroll-item');
     const index = Math.round(container.scrollTop / ITEM_HEIGHT);
     items.forEach((it, i) => it.classList.toggle('active', i === index));
- return items[index] ? Number(items[index].dataset.value) : 0;
+    return items[index] ? Number(items[index].dataset.value) : 0;
 }
  
 let hourScrollTimeout, minuteScrollTimeout;
