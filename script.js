@@ -344,8 +344,7 @@ function buildCalendar() {
 buildCalendar();
  
 function handleDayClick(isBirthday, year, monthIndex, day) {
-    sixthScreen.classList.add('shake');
-    setTimeout(() => sixthScreen.classList.remove('shake'), 400);
+    
  
     if (isBirthday) {
         pendingDateParts = { year, monthIndex, day };
