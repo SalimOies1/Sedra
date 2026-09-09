@@ -598,6 +598,10 @@ button{
     pointer-events: auto;
 }
 
+.shake{
+    animation: shakeScreen 0.4s ease;
+}
+
 #overlayText{
     display: inline-block;
     padding: 22px 36px;
@@ -610,7 +614,6 @@ button{
 
 .result-overlay.reject #overlayText{
     background: #d62828;
-    animation: shakeScreen 0.4s ease;
 }
 
 .result-overlay.accept #overlayText{
