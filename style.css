@@ -570,10 +570,12 @@ button{
     transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
-.day-cell:hover{
-    background: #fff0f3;
-    transform: scale(1.06);
-    box-shadow: 0 4px 10px rgba(255, 92, 124, 0.18);
+@media (hover: hover){
+    .day-cell:hover{
+        background: #fff0f3;
+        transform: scale(1.06);
+        box-shadow: 0 4px 10px rgba(255, 92, 124, 0.18);
+    }
 }
 
 .day-cell.empty{
