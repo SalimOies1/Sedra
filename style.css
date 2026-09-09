@@ -568,10 +568,8 @@ button{
     50%{ transform: scale(1.06); }
 }
 
-/* اهتزاز الشاشة */
-.shake{
-    animation: shakeScreen 0.4s ease;
-}
+
+
 
 @keyframes shakeScreen{
     0%, 100%{ transform: translateX(0); }
