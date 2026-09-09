@@ -617,7 +617,7 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(255, 245, 235, 0.85);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
