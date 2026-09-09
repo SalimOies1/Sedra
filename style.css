@@ -2,7 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    direction: rtl;
+}
+
+html{
+    background-color: #FFFAF0;
+    overscroll-behavior-y: none;
 }
  
 body {
@@ -15,6 +20,7 @@ body {
             transparent 68%
         ),
         #fff;
+    overscroll-behavior-y: none;
 }
 
 /* ================= شاشة 1: السؤال ================= */
