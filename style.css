@@ -1147,3 +1147,28 @@ button{
     display: none;
 }
 
+/* رفع المحتوى الأساسي فوق الزهور */
+.first-text,
+.first-buttons,
+.no-caption,
+.second-text,
+.options,
+#confirmBtn,
+#choiceResult,
+.third-text,
+.activity-options,
+#activityConfirmBtn,
+#activityResult,
+.fourth-text,
+.swipe-row,
+.swipe-dots,
+#foodConfirmBtn,
+#foodResult,
+.fifth-text,
+.artist-grid,
+#songConfirmBtn,
+.sixth-text,
+#calendarContainer{
+    position: relative;
+    z-index: 2;
+}
